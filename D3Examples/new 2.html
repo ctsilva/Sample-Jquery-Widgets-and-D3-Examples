@@ -1,0 +1,38 @@
+<html>
+<head>
+<script src="http://d3js.org/d3.v3.min.js"></script>
+</head>
+
+<body>
+<script>
+
+var dataArray=[10,20];
+
+
+
+			
+var canvas=d3.select("body")
+				.append("svg")
+				.attr("width",500)
+				.attr("height",500);
+				
+var circle = canvas.append("circle")
+			.attr("cx",50)
+			.attr("cy",100)
+			.attr("r",25);
+				
+var circles= canvas.selectAll("circle")
+			.data(dataArray)
+			.attr("fill","red")
+			.enter()
+			.append("circle")
+			.attr("cx",50)
+			.attr("cy",50)
+			.attr("fill","green")
+			.attr("r",25);
+				
+
+</script>
+</body>
+
+</html>
