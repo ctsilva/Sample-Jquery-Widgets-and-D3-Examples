@@ -1,47 +1,69 @@
-<html>
+<!doctype html>
+<html lang="en">
 <head>
-<script src="http://d3js.org/d3.v3.min.js"></script>
+<style type="text/css">
+.ui-tabs {
+width: 690px;
+margin: 2em auto;
+}
+.ui-tabs-header {
+font-size: 15px;
+font-weight: bold;
+}
+.ui-tabs-panel {
+font-size: 12px;
+}
+.ui-tabs-nav {
+font-size: 12px;
+}
+.jqplot-target {
+font-size: 18px;
+}
+ol.description {
+list-style-position: inside;
+font-size: 15px;
+margin: 1.5em auto;
+padding: 0 15px;
+width: 600px;
+}
+</style>
+  <meta charset="utf-8">
+  <title>jQuery UI Accordion - Default functionality</title>
+  <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+  <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+  <link rel="stylesheet" href="style.css">
+  <script>
+ $(function() {
+$( "#tabs" ).tabs();
+});
+$(document).ready(function(){
+$("#tabs").tabs();
+draw_linechart("#tabs-1",400,300);
+draw_barchart("#tabs-2",400,300);
+draw_piechart("#tabs-3",400,300);
+});
+  </script>
 </head>
-
 <body>
-<script>
-
-var dataArray=[20,40,50,60];
-
-var width = 500;
-var height =500;
-var widthScale=d3.scale.linear()
-				.domain([0, 60])
-				.range([0, width]);
-				
-var color=d3.scale.linear()
-			.domain([0, 60])
-			.range(["red","blue"]);
-
-var axis= d3.svg.axis()
-			.ticks(5)
-			.scale(widthScale);
-			
-var canvas=d3.select("body")
-				.append("svg")
-				.attr("width",width)
-				.attr("height",height)
-				.append("g")
-				.attr("transform","translate(20, 0)");
-				
-var bars=canvas.selectAll("rect")
-				.data(dataArray)
-				.enter()
-				.append("rect")
-				.attr("width", function(d){return widthScale(d); })
-				.attr("height",50)
-				.attr("fill",function(d){return color(d);})
-				.attr("y",function(d, i){return i*100})
-				
-		canvas.append("g")
-			.attr("transform","translate(0, 400 )")
-			.call(axis);
-</script>
+ 
+<div id="tabs">
+<ul>
+<li><a href="#tabs-1">Tab 1</a></li>
+<li><a href="#tabs-2">Tab 2</a></li>
+<li><a href="#tabs-3">Tab 3</a></li>
+</ul>
+<div id="tabs-1">
+<p>This is the line chart</p>
+</div>
+<div id="tabs-2">
+<p>This is the bar chart</p>
+</div>
+<div id="tabs-3">
+<p>This is the pie chart</p>
+</div>
+</div>
+ 
+ 
 </body>
-
 </html>
